@@ -1,0 +1,68 @@
+{
+  "name": "@fetchdesigns/theme-toggle-react-router",
+  "version": "1.0.0",
+  "description": "Theme toggle component for React Router with SSR support",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "keywords": [
+    "theme",
+    "dark-mode",
+    "react-router",
+    "theme-toggle",
+    "ssr",
+    "react"
+  ],
+  "author": "Fetch Designs",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fetchdesigns/theme-toggle.git",
+    "directory": "packages/react-router"
+  },
+  "dependencies": {
+    "@fetchdesigns/theme-toggle-core": "*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "react-router": "^7.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^27.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.9.3",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5",
+    "vitest": "^3.2.4"
+  }
+}
