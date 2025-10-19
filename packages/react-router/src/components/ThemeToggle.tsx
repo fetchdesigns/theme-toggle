@@ -55,6 +55,14 @@ interface Props {
    * @default '/theme'
    */
   action?: string;
+
+  /**
+   * Optional callback when theme changes
+   * Called after theme is applied but before server sync
+   * Useful for analytics, custom side effects, etc.
+   * @param newTheme - The new theme that was applied
+   */
+  onThemeChange?: (newTheme: Theme) => void;
 }
 
 /**
@@ -76,6 +84,7 @@ export function ThemeToggle({
   useDefaultStyles = true,
   cookieName = 'theme',
   action = '/theme',
+  onThemeChange,
 }: Props) {
   const location = useLocation();
   // Start with server value, or null to indicate "unknown/system"
@@ -120,6 +129,9 @@ export function ThemeToggle({
     // Update UI immediately
     setTheme(newTheme);
     manager.applyTheme(newTheme);
+
+    // Notify callback if provided
+    onThemeChange?.(newTheme);
 
     // Submit to server in background (set cookie)
     const formData = new FormData(event.currentTarget);

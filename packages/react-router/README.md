@@ -275,13 +275,29 @@ interface Props {
     slidingCircle?: string;
     iconInner?: string;
   };
-  useDefaultStyles?: boolean;  // Use default Tailwind styles (default: true)
-  cookieName?: string;         // Cookie name (default: 'theme')
-  action?: string;             // API endpoint (default: '/theme')
+  useDefaultStyles?: boolean;              // Use default Tailwind styles (default: true)
+  cookieName?: string;                     // Cookie name (default: 'theme')
+  action?: string;                         // API endpoint (default: '/theme')
+  onThemeChange?: (theme: Theme) => void;  // Callback when theme changes
 }
 ```
 
 #### Examples
+
+**Track Theme Changes (Analytics, etc.):**
+
+```tsx
+<ThemeToggle 
+  currentTheme={theme}
+  onThemeChange={(newTheme) => {
+    // Track in analytics
+    analytics.track('Theme Changed', { theme: newTheme });
+    
+    // Or custom side effects
+    console.log('User switched to:', newTheme);
+  }}
+/>
+```
 
 **Custom Icons:**
 

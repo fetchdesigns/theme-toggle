@@ -28,7 +28,8 @@ Object.defineProperty(window, 'matchMedia', {
 function renderWithRouter(
   initialTheme: 'light' | 'dark' = 'light',
   initialPath = '/',
-  currentTheme: 'light' | 'dark' | null = 'light'
+  currentTheme: 'light' | 'dark' | null = 'light',
+  onThemeChange?: (theme: 'light' | 'dark') => void
 ) {
   // Set the theme on the document before rendering
   document.documentElement.setAttribute('data-theme', initialTheme);
@@ -36,11 +37,11 @@ function renderWithRouter(
   const routes = [
     {
       path: '/',
-      element: <ThemeToggle currentTheme={currentTheme} cookieName="smart-report-theme" action="/api/theme-toggle" />,
+      element: <ThemeToggle currentTheme={currentTheme} cookieName="smart-report-theme" action="/api/theme-toggle" onThemeChange={onThemeChange} />,
     },
     {
       path: '/assessment',
-      element: <ThemeToggle currentTheme={currentTheme} cookieName="smart-report-theme" action="/api/theme-toggle" />,
+      element: <ThemeToggle currentTheme={currentTheme} cookieName="smart-report-theme" action="/api/theme-toggle" onThemeChange={onThemeChange} />,
     },
   ];
 
@@ -183,6 +184,30 @@ describe('ThemeToggle', () => {
       consoleSpy.mockRestore();
     });
 
+    it('calls onThemeChange callback when theme is toggled', async () => {
+      const user = userEvent.setup();
+      const onThemeChange = vi.fn();
+      
+      renderWithRouter('light', '/', 'light', onThemeChange);
+      
+      const toggleButton = screen.getByRole('button', { name: /switch to dark theme/i });
+      await user.click(toggleButton);
+      
+      // Callback should be called with the new theme
+      await waitFor(() => {
+        expect(onThemeChange).toHaveBeenCalledWith('dark');
+        expect(onThemeChange).toHaveBeenCalledTimes(1);
+      });
+      
+      // Toggle back to light
+      const lightButton = screen.getByRole('button', { name: /switch to light theme/i });
+      await user.click(lightButton);
+      
+      await waitFor(() => {
+        expect(onThemeChange).toHaveBeenCalledWith('light');
+        expect(onThemeChange).toHaveBeenCalledTimes(2);
+      });
+    });
   });
 
   describe('Form Submission (no-JS fallback)', () => {
