@@ -39,15 +39,36 @@ pnpm typecheck
 
 ### Publishing
 
-```bash
-# Create a changeset
-pnpm changeset
+This project uses [Changesets](https://github.com/changesets/changesets) for version management and publishing.
 
-# Version packages
+#### Workflow
+
+**When developing a feature/fix:**
+```bash
+# In your feature branch
+# 1. Make your code changes
+# 2. Create a changeset describing the change
+pnpm changeset
+# 3. Commit both your code AND the changeset file
+git add .
+git commit -m "feat: your feature"
+```
+
+**When ready to release:**
+```bash
+# After merging feature branches to main
+# 1. Version packages (reads all pending changesets, bumps versions, updates CHANGELOGs)
 pnpm version-packages
 
-# Publish to npm
+# 2. Commit the version changes
+git add .
+git commit -m "chore: release packages"
+
+# 3. Publish to npm
 pnpm release
+
+# 4. Push to git
+git push
 ```
 
 ## License

@@ -13,15 +13,19 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
-    "dev": "npm run dev --workspaces --if-present"
+    "dev": "npm run dev --workspaces --if-present",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "npm run build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@types/node": "^22.0.0",
-    "typescript": "^5.4.5",
-    "tsup": "^8.0.0",
-    "vitest": "^3.2.4",
+    "eslint": "^9.0.0",
     "prettier": "^3.2.5",
-    "eslint": "^9.0.0"
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=18.0.0",
