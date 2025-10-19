@@ -13,13 +13,9 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
-    "dev": "npm run dev --workspaces --if-present",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "npm run build && changeset publish"
+    "dev": "npm run dev --workspaces --if-present"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
     "@types/node": "^22.0.0",
     "typescript": "^5.4.5",
     "tsup": "^8.0.0",
