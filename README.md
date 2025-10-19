@@ -37,6 +37,31 @@ pnpm test
 pnpm typecheck
 ```
 
+### Commit Convention
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) enforced by commitlint. Commit messages must follow this format:
+
+```
+<type>(<scope>): <subject>
+```
+
+**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+
+**Examples**:
+- `feat(core): add dark mode toggle functionality`
+- `fix(react-router): resolve theme flashing on page load`
+- `docs: update installation instructions`
+
+See [`.husky/COMMIT_CONVENTION.md`](.husky/COMMIT_CONVENTION.md) for detailed guidelines.
+
+### Git Hooks
+
+This project uses [Husky](https://typicode.github.io/husky/) to enforce quality standards:
+
+- **Pre-commit**: Runs tests to ensure code quality
+- **Commit-msg**: Validates commit message format
+- **Pre-push**: Runs tests before pushing to remote
+
 ### Publishing
 
 This project uses [Changesets](https://github.com/changesets/changesets) for version management and publishing.
