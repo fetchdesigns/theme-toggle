@@ -12,6 +12,7 @@
     "@fetchdesigns/theme-toggle-react-router": "workspace:*",
     "@react-router/node": "^7.9.4",
     "@react-router/serve": "^7.9.4",
+    "@vercel/react-router": "^1.2.3",
     "isbot": "^5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
