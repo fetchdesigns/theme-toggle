@@ -173,7 +173,7 @@ export function ThemeToggle({
     container: 'relative flex items-center justify-center gap-1 w-11 h-6',
     neutralIconWrapper: 'flex items-center justify-center w-4 h-4',
     activeContainer: 'relative flex items-center w-11 h-6',
-    slidingCircle: 'flex items-center justify-center w-5 h-5 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-sm transition-transform duration-300',
+    slidingCircle: 'flex items-center justify-center w-5 h-5 bg-black dark:bg-white text-white dark:text-black rounded-full transition-transform duration-300',
     iconInner: '',
   };
 

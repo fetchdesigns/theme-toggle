@@ -7,6 +7,12 @@ A theme toggle that is both accessible and progressively enhanced to work with a
 - **[@fetchdesigns/theme-toggle-core](./packages/core)** - Framework-agnostic theme management core
 - **[@fetchdesigns/theme-toggle-react-router](./packages/react-router)** - React Router integration
 
+## Examples
+
+See working examples in the [examples/](./examples) directory:
+
+- **[Basic React Router](./examples/basic-react-router)** - Minimal setup demonstrating core features
+
 ## Features
 
 - 🌓 Light/Dark theme switching

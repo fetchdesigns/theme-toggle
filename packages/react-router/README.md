@@ -128,7 +128,21 @@ The ThemeToggle component comes with default Tailwind styles. You have three opt
 
 #### Option A: Use with Tailwind
 
-Add the package to your Tailwind content paths so the classes are generated:
+**For Tailwind CSS v4:**
+
+Add the package to your CSS file using the `@source` directive:
+
+```css
+/* app.css (or your main CSS file) */
+@import "tailwindcss";
+
+@source "./app/**/*.{html,js,ts,jsx,tsx}";
+@source "./node_modules/@fetchdesigns/theme-toggle-react-router/dist/**/*.{js,cjs}"; /* ← Add this */
+```
+
+**For Tailwind CSS v3:**
+
+Add the package to your Tailwind content paths:
 
 ```js
 // tailwind.config.js
@@ -143,7 +157,17 @@ export default {
 
 **💡 Tip: Enable Tailwind's `dark:` utilities**
 
-To use Tailwind's `dark:` utilities (like `dark:bg-gray-800`) with the `data-theme` attribute, configure the `darkMode` setting:
+To use Tailwind's `dark:` utilities (like `dark:bg-gray-800`) with the `data-theme` attribute:
+
+**For Tailwind CSS v4:**
+
+```css
+/* app.css */
+@variant dark (:root[data-theme="dark"] &);
+@variant system-dark (@media (prefers-color-scheme: dark) { :root:not([data-theme]) & });
+```
+
+**For Tailwind CSS v3:**
 
 ```js
 // tailwind.config.js
