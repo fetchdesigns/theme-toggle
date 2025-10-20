@@ -1,5 +1,4 @@
 {
-  "buildCommand": "cd ../.. && pnpm build && cd examples/basic-react-router && pnpm build",
+  "buildCommand": "cd ../.. && pnpm build && cd examples/basic-react-router && pnpm build && mkdir -p ../../.vercel && cp .vercel/react-router-build-result.json ../../.vercel/react-router-build-result.json",
   "installCommand": "pnpm install --frozen-lockfile"
 }
-
