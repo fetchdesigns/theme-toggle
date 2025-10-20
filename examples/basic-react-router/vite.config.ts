@@ -4,11 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [
-    reactRouter({
-      presets: [vercelPreset()],
-    }),
-    tailwindcss(),
-  ],
+  plugins: [vercelPreset(), reactRouter(), tailwindcss()],
 });
 
