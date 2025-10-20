@@ -3,6 +3,6 @@
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": "vite",
-  "outputDirectory": "dist"
+  "outputDirectory": "build/client"
 }
 
