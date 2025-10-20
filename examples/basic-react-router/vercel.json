@@ -2,19 +2,10 @@
   "buildCommand": "cd ../.. && pnpm build && cd examples/basic-react-router && pnpm build",
   "installCommand": "pnpm install --frozen-lockfile",
   "outputDirectory": "build/client",
-  "functions": {
-    "api/server.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/server.js"
+      "source": "/(.*)",
+      "destination": "/api/server"
     }
   ]
 }
