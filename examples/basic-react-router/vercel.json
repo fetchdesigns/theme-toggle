@@ -1,8 +1,21 @@
 {
   "buildCommand": "cd ../.. && pnpm build && cd examples/basic-react-router && pnpm build",
-  "devCommand": "pnpm dev",
   "installCommand": "pnpm install --frozen-lockfile",
-  "framework": "vite",
-  "outputDirectory": "build/client"
+  "outputDirectory": "build/client",
+  "functions": {
+    "api/server.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/server.js"
+    }
+  ]
 }
 
