@@ -42,8 +42,8 @@ type RouteFiles = {
 };
 
 type RouteModules = {
-  "root": typeof import("./src/root.tsx");
-  "routes/_index": typeof import("./src/routes/_index.tsx");
-  "routes/documentation": typeof import("./src/routes/documentation.tsx");
-  "routes/theme": typeof import("./src/routes/theme.tsx");
+  "root": typeof import("./app/root.tsx");
+  "routes/_index": typeof import("./app/routes/_index.tsx");
+  "routes/documentation": typeof import("./app/routes/documentation.tsx");
+  "routes/theme": typeof import("./app/routes/theme.tsx");
 };

@@ -2,6 +2,17 @@
 
 A minimal example demonstrating how to use `@fetchdesigns/theme-toggle-react-router` in a React Router application.
 
+## Example Tech Stack
+
+This example uses:
+
+- **[React Router v7](https://reactrouter.com/)** - Full-stack React framework with SSR
+- **[React 19](https://react.dev/)** - UI library
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Vite](https://vite.dev/)** - Build tool and dev server
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[@fetchdesigns/theme-toggle-react-router](https://www.npmjs.com/package/@fetchdesigns/theme-toggle-react-router)** - Theme toggle with SSR support
+
 ## Getting Started
 
 ### Install Dependencies
@@ -29,7 +40,7 @@ pnpm preview
 ## Key Files for Theme Toggle
 
 ```
-src/
+app/
 ├── root.tsx       # Add loader and <ThemeScript />
 ├── routes/
 │   └── theme.tsx  # Create action handler
@@ -40,7 +51,7 @@ src/
 
 ## Key Implementation Details
 
-### 1. Root Layout (`src/root.tsx`)
+### 1. Root Layout (`app/root.tsx`)
 
 ```tsx
 import { ThemeScript, getThemeFromCookie } from '@fetchdesigns/theme-toggle-react-router';
@@ -68,7 +79,7 @@ export default function Root() {
 }
 ```
 
-### 2. Theme Toggle (`src/components/Header.tsx`)
+### 2. Theme Toggle (`app/components/Header.tsx`)
 
 ```tsx
 import { ThemeToggle } from '@fetchdesigns/theme-toggle-react-router';
@@ -76,13 +87,13 @@ import { ThemeToggle } from '@fetchdesigns/theme-toggle-react-router';
 <ThemeToggle currentTheme={theme} />
 ```
 
-### 3. Theme Action Handler (`src/routes/theme.tsx`)
+### 3. Theme Action Handler (`app/routes/theme.tsx`)
 
 ```tsx
 export const action = createThemeActionHandler();
 ```
 
-### 4. Theme Styling (`src/app.css`)
+### 4. Theme Styling (`app/app.css`)
 Example uses Tailwind 4 although it's not a requirement.
 
 ```css

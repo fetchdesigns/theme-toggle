@@ -32,7 +32,9 @@ export default function Root() {
       </head>
       <body>
         <Header theme={theme} />
-        <Outlet />
+        <div className="pt-20">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>

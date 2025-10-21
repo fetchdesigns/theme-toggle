@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router';
 import { ThemeToggle } from '@fetchdesigns/theme-toggle-react-router';
 import type { Theme } from '@fetchdesigns/theme-toggle-react-router';
@@ -7,12 +8,44 @@ interface HeaderProps {
 }
 
 export default function Header({ theme }: HeaderProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Update compact state
+      setIsScrolled(currentScrollY > 20);
+      
+      // Show header when scrolling up or at top
+      // Hide header when scrolling down (but not if near top)
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past threshold
+        setIsVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="sticky top-0 z-50 border-b shadow-sm" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-color)' }}>
-      <nav className="max-w-screen-xl mx-auto px-8 py-4">
+    <header className={`fixed top-0 left-0 right-0 z-50 shadow-lg bg-card transition-all duration-300 ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
+      <nav className={`max-w-screen-xl mx-auto px-8 transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
           <Link to="/" className="flex-shrink-0 flex items-center gap-2 no-underline">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 60 60" className="w-10 h-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 60 60" className={`transition-all duration-300 ${isScrolled ? 'w-8 h-8' : 'w-10 h-10'}`}>
               {/* Large background circle - split colors */}
               {/* Left half - Light sky blue */}
               <path d="M28 -1 A29 29 0 0 0 28 57 L28 28 Z" fill="#6497ba" />
@@ -64,9 +97,9 @@ export default function Header({ theme }: HeaderProps) {
               <circle cx="34" cy="24" r="2" fill="#4A5674" opacity="0.5" />
               <circle cx="38" cy="32" r="1.5" fill="#4A5674" opacity="0.5" />
             </svg>
-            <div className="flex flex-col">
-              <span className="text-xl font-thin">Theme Toggle</span>
-              <span className="text-[0.6rem] pl-[.4em] -mt-[.5em]" style={{ color: 'var(--text-secondary)' }}>by Fetch Designs</span>
+            <div className="flex flex-col transition-all duration-300">
+              <span className={`font-thin transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-xl'}`}>Theme Toggle</span>
+              <span className={`pl-[.4em] -mt-[.5em] transition-all duration-300 ${isScrolled ? 'text-[0.5rem]' : 'text-[0.6rem]'}`} style={{ color: 'var(--text-secondary)' }}>by Fetch Designs</span>
             </div>
           </Link>
           <div className="flex items-center flex-wrap gap-x-6 gap-y-2 ml-auto">

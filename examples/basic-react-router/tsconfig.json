@@ -21,6 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/vite-env.d.ts", ".react-router/types"]
+  "include": ["app", ".react-router/types"]
 }
 

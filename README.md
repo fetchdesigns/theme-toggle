@@ -1,4 +1,4 @@
-# @fetchdesigns/theme-toggle
+# Theme Toggle by Fetch Designs
 
 A theme toggle that is both accessible and progressively enhanced to work with and without JavaScript. React Router is currently supported.
 
@@ -11,13 +11,15 @@ A theme toggle that is both accessible and progressively enhanced to work with a
 
 See working examples in the [examples/](./examples) directory:
 
-- **[Basic React Router](./examples/basic-react-router)** - Minimal setup demonstrating core features
+- **[React Router Example](./examples/basic-react-router)** - Minimal setup demonstrating core features ([Live Demo](https://fetchdesigns-theme-toggle.vercel.app/))
 
 ## Features
 
+- ♿ Accessible - Keyboard navigation, ARIA labels, semantic HTML
+- ✨ Progressive Enhancement - Works with or without JavaScript
+- 🚀 SSR-Friendly - No flash of wrong theme on page load
 - 🌓 Light/Dark theme switching
 - 🔄 System theme detection with fallback
-- 🚀 SSR-friendly (no flash of wrong theme)
 - ⚡ Client-side optimistic updates
 - 🎨 Customizable icons and styling
 - 📦 Small bundle size

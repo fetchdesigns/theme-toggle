@@ -9,6 +9,7 @@
 
 @theme {
   --color-accent: var(--accent-color);
+  --color-card: var(--bg-card);
 }
 
 @layer base {
@@ -56,14 +57,14 @@
   --code-bg: #ffffff;
   --text-primary: #1a1a1a;
   --text-secondary: #666666;
-  --border-color: #e0e0e0;
+  --border-color: #ffffff;
   --accent-color: #1d4ed8;
   --shadow: rgba(0, 0, 0, 0.1);
   --bg-gradient: linear-gradient(135deg, 
     #ffffff 0%, 
     #f0f4ff 25%, 
     #fff5f0 50%, 
-    #f0fff4 75%, 
+    #f0f4ff 75%, 
     #ffffff 100%);
 }
 
@@ -76,14 +77,14 @@
     --code-bg: #0d1117;
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
-    --border-color: #404040;
+    --border-color: #0d1117;
     --accent-color: #eac263;
     --shadow: rgba(0, 0, 0, 0.3);
     --bg-gradient: linear-gradient(135deg, 
       #1a1a1a 0%, 
       #1a1d28 25%, 
       #28211a 50%, 
-      #1a2820 75%, 
+      #1a1d28 75%, 
       #1a1a1a 100%);
   }
 }
@@ -96,14 +97,14 @@
   --code-bg: #ffffff;
   --text-primary: #1a1a1a;
   --text-secondary: #666666;
-  --border-color: #e0e0e0;
+  --border-color: #ffffff;
   --accent-color: #1d4ed8;
   --shadow: rgba(0, 0, 0, 0.1);
   --bg-gradient: linear-gradient(135deg, 
     #ffffff 0%, 
     #f0f4ff 25%, 
     #fff5f0 50%, 
-    #f0fff4 75%, 
+    #f0f4ff 75%, 
     #ffffff 100%);
 }
 
@@ -114,14 +115,14 @@
   --code-bg: #0d1117;
   --text-primary: #ffffff;
   --text-secondary: #b3b3b3;
-  --border-color: #404040;
+  --border-color: #0d1117;
   --accent-color: #eac263;
   --shadow: rgba(0, 0, 0, 0.3);
   --bg-gradient: linear-gradient(135deg, 
     #1a1a1a 0%, 
     #1a1d28 25%, 
     #28211a 50%, 
-    #1a2820 75%, 
+    #1a1d28 75%, 
     #1a1a1a 100%);
 }
 
@@ -141,10 +142,20 @@
 }
 
 @layer base {
-  /* Global element styles */
+  /* Disable transitions for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   a {
-    color: var(--accent-color);
-    text-decoration: underline;
+    @apply text-accent font-normal underline;
     text-underline-offset: 3px;
     transition: color 0.2s ease;
   }
@@ -191,7 +202,7 @@
   }
 
   p {
-    @apply my-4;
+    @apply my-4 font-thin;
   }
 
   ul, ol {
